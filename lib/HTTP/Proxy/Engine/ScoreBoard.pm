@@ -183,7 +183,7 @@ sub _run_child {
     my $daemon       = $proxy->daemon();
     my $status_write = $self->status_write();
 
-    open my $lockfh, $self->tempfile()->filename() or do {
+    open my $lockfh, '<', $self->tempfile()->filename() or do {
         $proxy->log( HTTP::Proxy::ERROR, "ERROR", "Cannot open lock file: $!" );
         exit;
     };
